@@ -6,5 +6,4 @@ import {upload} from "../middlewares/multer.middleware.js"
 
 router.route("/products").get(FetchProductByCategory)
 router.route("/post").post(upload.single("image"),PostProduct)
-
 export default router

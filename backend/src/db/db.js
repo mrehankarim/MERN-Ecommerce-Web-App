@@ -1,4 +1,3 @@
-import asynHandler from "../utils/asyncHandler.js";
 import { DB_NAME } from "../constants.js";
 import mongoose from "mongoose"
 const connectDB=async ()=>{

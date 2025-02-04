@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import ProductCard from '../components/ProductCard';
-import axios from 'axios';
 const Chairs = () => {
   const [data, setData] = useState([]);
 
   // Function to fetch chairs
   const fetchChairs = async (category) => {
-    const uri = `http://127.0.0.1:8000/chairs?category=${encodeURIComponent(category)}`;
-
     try {
-      const response = await axios.get(uri);
-      if (response.status === 200) {
-        setData(response.data.data);
-      } else {
-        throw new Error('Unexpected response');
-      }
+      const response = await fetch('http://localhost:3000/api/v1/products', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          category: category
+        })
+      });
+      const result = await response.json();
+      setData(result.data.products);
     } catch (error) {
-      console.log('Response Failed:', error);
+      console.error("Error fetching chairs:", error);
     }
-  };
+  }
 
 
   // Use useEffect to call fetchChairs when the component mounts
