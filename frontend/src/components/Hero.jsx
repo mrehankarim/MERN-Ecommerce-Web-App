@@ -12,7 +12,7 @@ const Hero = () => {
           backgroundImage: `url(${hero})`,
         }}
       >
-        <div className="flex flex-col gap-5 absolute top-[18%] left-1/2 translate-x-[-50%]">
+        <div className="flex flex-col gap-5 absolute top-[24%] left-1/2 translate-x-[-50%]">
           <h1 className="text-7xl  lg:text-5xl md:text-4xl font-bold leading-snug text-center text-nowrap md:text-wrap">
             Make Your Interior More <br />
             Minimalistic & Modern

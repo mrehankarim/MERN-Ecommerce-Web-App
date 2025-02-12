@@ -12,6 +12,7 @@ import Bed from './Pages/Bed';
 import Cupboard from './Pages/Cupboard';
 import Cart from './Pages/Cart';
 import { CartProvider,CounterProvider } from './components/context';
+import PostProduct from './Pages/PostProduct';
 
 const App = () => {
   
@@ -60,6 +61,10 @@ const App = () => {
     {
       path:"/cupboards",
       element:<Cupboard/>
+    },
+    {
+      path:"/postproduct",
+      element:<PostProduct/>
     }
 
   ])

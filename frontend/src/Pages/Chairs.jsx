@@ -7,21 +7,31 @@ const Chairs = () => {
   // Function to fetch chairs
   const fetchChairs = async (category) => {
     try {
-      const response = await fetch('http://localhost:3000/api/v1/products', {
-        method: "POST",
+      const response = await fetch(`http://localhost:3000/api/v1/products?category=${encodeURIComponent(category)}`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          category: category
-        })
+        }
       });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+
       const result = await response.json();
-      setData(result.data.products);
+
+      if (result.statusCode === 200) {
+        setData(result.data.products)
+        console.log(result.data.products)
+      } else {
+        throw new Error(result.message || 'Failed to fetch products');
+      }
+
     } catch (error) {
       console.error("Error fetching chairs:", error);
     }
-  }
+  };
+
 
 
   // Use useEffect to call fetchChairs when the component mounts
@@ -38,8 +48,8 @@ const Chairs = () => {
             <ProductCard
               key={index} // Unique key for React
               title={chair.product_name}
-              ProductImage={chair.image_url} // Ensure the backend provides `image_url`
-              price={chair.price}
+              ProductImage={chair.product_Image} // Ensure the backend provides `image_url`
+              price={chair.product_price}
             />
           ))}
         </div>

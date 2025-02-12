@@ -5,7 +5,7 @@ import apiResponse from "../utils/apiResponse.js";
 import fileUploader from "../utils/cloudinary.js"
 const FetchProductByCategory=asynHandler(async (req,res)=>{
 
-    const {category}=req.body
+    const {category}=req.query
 
     if(!category)
     {
@@ -33,6 +33,7 @@ const PostProduct=asynHandler(async (req,res)=>{
     {
         throw new apiError(400,"All fields are required")
     }
+    console.log(req.file)
     const localFilePath=req.file?.path
 
     if(!localFilePath)

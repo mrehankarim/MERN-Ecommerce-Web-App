@@ -22,7 +22,7 @@ const Navbar = () => {
     
   return (
     <>
-      <div className='w-full relative bg-black flex justify-between items-center px-4 h-20'>
+      <div className='w-full  bg-black flex justify-between items-center px-4 h-20'>
         <div>
         <button onClick={()=>{setNav(!nav)}}><GiHamburgerMenu size="34px" color='white'/></button>
         </div>
